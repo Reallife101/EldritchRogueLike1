@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class mapGenerator : MonoBehaviour
 {
@@ -41,9 +42,9 @@ public class mapGenerator : MonoBehaviour
     public List<GameObject> ESW;
     public List<GameObject> NESW;
     public List<List<GameObject>> rooms = new List<List<GameObject>>();
-
     public GameObject player;
     public GameObject exit;
+    public NavMeshSurface navmeshSurface;
 
 
     public static int WIDTH = 4;
@@ -288,7 +289,7 @@ public class mapGenerator : MonoBehaviour
     //--------------- Build Map ---------------
     public void buildmap(int[,] matrix)
     {
-        player.transform.position = new Vector3((WIDTH - 1) / 2*ROOM_LENGTH, 0f, -((HEIGHT - 1) / 2 * ROOM_LENGTH));
+        player.transform.position = new Vector3((WIDTH - 1) / 2 * ROOM_LENGTH, 0f, -((HEIGHT - 1) / 2 * ROOM_LENGTH));
 
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
@@ -298,15 +299,17 @@ public class mapGenerator : MonoBehaviour
                 int room = rotates[matrix[i, j]].Item1;
                 int rand = Random.Range(0, rooms[room].Count);
 
-                Instantiate(rooms[room][rand], new Vector3(j*ROOM_LENGTH, (float)-0.5, -i*ROOM_LENGTH), Quaternion.Euler(0, rotation, 0));
-                if (exitLoc == (i,j))
+                Instantiate(rooms[room][rand], new Vector3(j * ROOM_LENGTH, (float)-0.5, -i * ROOM_LENGTH), Quaternion.Euler(0, rotation, 0));
+                if (exitLoc == (i, j))
                 {
                     Instantiate(exit, new Vector3(j * ROOM_LENGTH, 0.5f, -i * ROOM_LENGTH), Quaternion.identity);
                 }
             }
         }
-    }
 
+        navmeshSurface.BuildNavMesh();
+
+    }
 
     //private static bool[,,] bans;
     // Start is called before the first frame update
