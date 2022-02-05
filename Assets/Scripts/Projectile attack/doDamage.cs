@@ -7,17 +7,18 @@ public class doDamage : MonoBehaviour
     public int damageValue = 5;
     public int destroyMask;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.layer == destroyMask)
+        if (other.gameObject.layer == destroyMask)
         {
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.GetComponent<Assets.Scripts.Enemies.IHealth>())
+        if (other.gameObject.GetComponent<PlayerHealth>())
         {
-            collision.gameObject.GetComponent<Assets.Scripts.Enemies.IHealth>().TakeDamage(damageValue);
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damageValue);
             Destroy(gameObject);
         }
     }
+
 }
