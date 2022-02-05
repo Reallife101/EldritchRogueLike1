@@ -13,3 +13,5 @@ Senior\ Project.sln
 SeniorProject1.sln
 .collabignore
 Eldritch_RogueLike.sln
+NavMeshComponents.csproj
+NavMeshComponentsEditor.csproj
