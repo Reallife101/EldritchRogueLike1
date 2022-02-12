@@ -13,6 +13,7 @@ public class HitscanGun : Assets.Scripts.Guns.AGun
     [SerializeField] private float range;
     [SerializeField] private float spread;
     [SerializeField] private GameObject hitEffect;
+    [SerializeField] private LayerMask playerMask;
 
     public HitscanGun(Camera mainCamera, uint bulletsPerShot, float damage,
         float fireRate, float range, float spread)
@@ -62,13 +63,17 @@ public class HitscanGun : Assets.Scripts.Guns.AGun
                 RaycastHit hit;
                 //direction = forward + up * Random.Range(-spread, spread) + right * Random.Range(-spread, spread);
                 direction = forward + (Vector3)Random.insideUnitCircle * spread;
-                if (Physics.Raycast(position, direction, out hit, range))
+                if (Physics.Raycast(position, direction, out hit, range, ~playerMask))
                 {
                     stringBuilder.Append(hit.transform.name + " ");
                     IHealth healthObj = hit.transform.gameObject.GetComponent<IHealth>();
-                    healthObj.TakeDamage(damage);
-                    GameObject effect = Instantiate(hitEffect, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(-hit.normal));
-                    Destroy(effect, 1.0f);
+
+                    if (healthObj)
+                    {
+                        healthObj.TakeDamage(damage);
+                        GameObject effect = Instantiate(hitEffect, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(-hit.normal));
+                        Destroy(effect, 1.0f);
+                    }
                 }
             }
             Debug.Log(stringBuilder.ToString());
