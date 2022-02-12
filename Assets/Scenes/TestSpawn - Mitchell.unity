@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 307065340}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2085,7 +2085,7 @@ MonoBehaviour:
   NESW:
   - {fileID: 1333380216773568627, guid: 61500b7d423fdb546a752e1d4b36ffa2, type: 3}
   player: {fileID: 307065333}
-  exit: {fileID: 4181632210734835861, guid: bdd4ac85e31d3c344a13d33cc7ddd8fc, type: 3}
+  exit: {fileID: 101917285437899421, guid: bd458b70fd727ac49a490b515eba9fd4, type: 3}
   navmeshSurface: {fileID: 1490839258}
   SpawnerTag: spawner
   DefaultTag: Untagged
