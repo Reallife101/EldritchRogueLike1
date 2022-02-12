@@ -318,6 +318,10 @@ public class mapGenerator : MonoBehaviour
     private void SpawnEnemies()
     {
         GameObject[] spawners = GameObject.FindGameObjectsWithTag(SpawnerTag);
+        if (spawners.Length < 1)
+        {
+            return;
+        }
         for (int i = 0; i < NumToSpawn; i++)
         {
             int randomIndex = Random.Range(0, spawners.Length);
