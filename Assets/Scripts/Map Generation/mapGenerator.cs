@@ -47,7 +47,7 @@ public class mapGenerator : MonoBehaviour
     public NavMeshSurface navmeshSurface;
     public string SpawnerTag = "Spawner";
     public string DefaultTag = "Untagged";
-    public int NumToSpawn = 5;
+    public Vector2 NumToSpawn = new Vector2(4, 6);
     public GameObject EnemyPrefab;
 
     public static int WIDTH = 4;
@@ -306,8 +306,8 @@ public class mapGenerator : MonoBehaviour
                 if (exitLoc == (i, j))
                 {
                     Instantiate(exit, new Vector3(j * ROOM_LENGTH, 0.5f, -i * ROOM_LENGTH), Quaternion.identity);
-                    SpawnEnemies();
                 }
+                SpawnEnemies();
             }
         }
 
@@ -319,10 +319,9 @@ public class mapGenerator : MonoBehaviour
     {
         GameObject[] spawners = GameObject.FindGameObjectsWithTag(SpawnerTag);
         if (spawners.Length < 1)
-        {
             return;
-        }
-        for (int i = 0; i < NumToSpawn; i++)
+        int numEnemies = Mathf.RoundToInt(Random.Range(NumToSpawn.x, NumToSpawn.y));
+        for (int i = 0; i < numEnemies; i++)
         {
             int randomIndex = Random.Range(0, spawners.Length);
             Vector3 spawnPosition = spawners[randomIndex].transform.position;

@@ -2087,9 +2087,9 @@ MonoBehaviour:
   player: {fileID: 307065333}
   exit: {fileID: 101917285437899421, guid: bd458b70fd727ac49a490b515eba9fd4, type: 3}
   navmeshSurface: {fileID: 1490839258}
-  SpawnerTag: spawner
+  SpawnerTag: Spawner
   DefaultTag: Untagged
-  NumToSpawn: 5
+  NumToSpawn: {x: 2, y: 6}
   EnemyPrefab: {fileID: 5511012760704140467, guid: 21e09f59ae9301244ac5d108f36e4a49, type: 3}
 --- !u!1 &1477814713
 GameObject:
