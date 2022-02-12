@@ -45,7 +45,10 @@ public class mapGenerator : MonoBehaviour
     public GameObject player;
     public GameObject exit;
     public NavMeshSurface navmeshSurface;
-
+    public string SpawnerTag = "Spawner";
+    public string DefaultTag = "Untagged";
+    public int NumToSpawn = 5;
+    public GameObject EnemyPrefab;
 
     public static int WIDTH = 4;
     public static int HEIGHT = 4;
@@ -303,12 +306,30 @@ public class mapGenerator : MonoBehaviour
                 if (exitLoc == (i, j))
                 {
                     Instantiate(exit, new Vector3(j * ROOM_LENGTH, 0.5f, -i * ROOM_LENGTH), Quaternion.identity);
+                    SpawnEnemies();
                 }
             }
         }
 
         navmeshSurface.BuildNavMesh();
 
+    }
+
+    private void SpawnEnemies()
+    {
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag(SpawnerTag);
+        for (int i = 0; i < NumToSpawn; i++)
+        {
+            int randomIndex = Random.Range(0, spawners.Length);
+            Vector3 spawnPosition = spawners[randomIndex].transform.position;
+            GameObject enemy = Instantiate(EnemyPrefab);
+            enemy.transform.position = spawnPosition;
+            enemy.transform.SetParent(null);
+        }
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            spawners[i].tag = DefaultTag;
+        }
     }
 
     //private static bool[,,] bans;
