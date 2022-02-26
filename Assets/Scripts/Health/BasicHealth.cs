@@ -25,6 +25,7 @@ namespace Assets.Scripts.Enemies
             if (health < 0.0000001)
             {
                 UnityEngine.Debug.Log("I'm Dead");
+                Destroy(gameObject);
             }
         }
 
