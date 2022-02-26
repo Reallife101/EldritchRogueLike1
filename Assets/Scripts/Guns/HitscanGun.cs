@@ -61,7 +61,7 @@ public class HitscanGun : Assets.Scripts.Guns.AGun
             {
                 RaycastHit hit;
                 //direction = forward + up * Random.Range(-spread, spread) + right * Random.Range(-spread, spread);
-                direction = forward + (Vector3)Random.insideUnitCircle * spread;
+                direction = forward + Quaternion.FromToRotation(Vector3.forward, forward) * (Vector3)Random.insideUnitCircle * spread;
                 if (Physics.Raycast(position, direction, out hit, range))
                 {
                     stringBuilder.Append(hit.transform.name + " ");
