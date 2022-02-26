@@ -40,7 +40,7 @@ public class PlayerHealth : Assets.Scripts.Enemies.IHealth
 
     private void die()
     {
-        Debug.Log("Player Death");
+        //Debug.Log("Player Death");
     }
 
 }

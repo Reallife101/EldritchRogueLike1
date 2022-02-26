@@ -245,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.3333334, z: 1}
   m_Children: []
   m_Father: {fileID: 5511012760704140430}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5511012760069515129
 MeshFilter:
@@ -360,7 +360,7 @@ RectTransform:
   - {fileID: 5511012761349208478}
   - {fileID: 5511012761125880144}
   m_Father: {fileID: 5511012760704140430}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -645,8 +645,8 @@ Transform:
   m_LocalPosition: {x: 2.0799704, y: 3.3097048, z: 5.461811}
   m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_Children:
-  - {fileID: 5511012760546370258}
   - {fileID: 5511012760069515132}
+  - {fileID: 5511012760546370258}
   - {fileID: 4625086842805819133}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -726,7 +726,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
   agent: {fileID: 5849936615874163185}
   minDistance: 25
   maxDistance: 40
-  followRegardless: 1
+  followRegardless: 0
   randomDistance: 0
 --- !u!195 &5849936615874163185
 NavMeshAgent:
